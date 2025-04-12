@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRegister } from '../hooks/useRegister';
 import { ToastContainer } from 'react-toastify';
+import Footer from '../components/Footer'; 
 
 const Register = () => {
   const { handleRegister, formData, setFormData, errorMessage } = useRegister();
@@ -11,7 +12,7 @@ const Register = () => {
         {/* Left Section (Form) */}
         <div className="w-full md:w-1/2 p-8">
           <h2 className="text-2xl font-bold text-gray-800 text-center">Create an Account</h2>
-          <p className="text-center text-gray-500 mb-5">Sign up to manage your inventory and sales</p>
+          <p className="text-center text-gray-500 mb-5">Sign up to manage your inventory PayStock</p>
 
           <form onSubmit={handleRegister}>
             {/* Username Field */}
@@ -89,7 +90,9 @@ const Register = () => {
       </div>
       <ToastContainer />
     </div>
+    
   );
+ 
 };
 
 export default Register;
