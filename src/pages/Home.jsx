@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
-import WelcomeSection from '../components/WelcomeSection';                                                
+import WelcomeSection from '../components/WelcomeSection';
+import Footer from '../components/Footer';                                                
 
 function Home() {
   return (
