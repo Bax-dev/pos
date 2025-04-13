@@ -51,12 +51,10 @@ export const useRegister = () => {
       const response = await axios.post(API_ROUTES.REGISTER, formData);
 
       if (response.status === 200) {
-        // Assuming ToastContainer is now handled in the component
         setFormData({ username: '', email: '', password: '' }); 
       }
     } catch (error) {
       setErrorMessage('Registration failed. Please try again.');
-      // Handle error message in the component
     }
   };
 

@@ -1,6 +1,30 @@
 {
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/pages/**/*.jsx",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "src/**/*.js",
+      "use": "@vercel/static-build"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/register",
+      "dest": "/src/pages/Register.jsx"
+    },
+    {
+      "src": "/login",
+      "dest": "/src/pages/Login.jsx"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/src/pages/Home.jsx"
+    }
+  ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
-
