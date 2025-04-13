@@ -5,7 +5,7 @@ import Login from '../pages/Login';
 
 const navigationRoutes = [
   {
-    path: '/Register',
+    path: '/',
     element: <Home />,
   },
 
