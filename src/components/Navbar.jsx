@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";  // Import Link from react-router-dom
 import { initNavbarToggle } from "../utils/navbarToggle"; // adjust path if needed
 
 const Navbar = () => {
@@ -14,8 +15,7 @@ const Navbar = () => {
             <nav className="main-nav">
               {/* Logo */}
               <a href="index.html" className="logo">
-                {" "}
-                PayStock{" "}
+                PayStock
               </a>
 
               {/* Main Nav Links */}
@@ -40,19 +40,21 @@ const Navbar = () => {
                     Contact Us
                   </a>
                 </li>
+                {/* Use Link from react-router-dom instead of <a> */}
                 <li className="scroll-to-section">
-                  <a href="/register" className="menu-item">
+                  <Link to="/register" className="menu-item">
                     Register
-                  </a>
+                  </Link>
                 </li>
 
                 <li className="scroll-to-section">
-                  <a href="/login" className="menu-item">
-                  Login
-                  </a>
+                  <Link to="/login" className="menu-item">
+                    Login
+                  </Link>
                 </li>
               </ul>
-              
+
+              {/* Menu Trigger for Mobile */}
               <a className="menu-trigger">
                 <span>Menu</span>
               </a>
