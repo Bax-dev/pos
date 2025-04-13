@@ -1,15 +1,18 @@
-import React from 'react';
+
+import React, { Suspense} from 'react'; 
 import Navbar from '../components/Navbar';
 import WelcomeSection from '../components/WelcomeSection';
-import Footer from '../components/Footer';                                                
+import Footer from '../components/Footer';                                               
 
 function Home() {
   return (
-    <div>
-      <Navbar />
-      <WelcomeSection />
-      <Footer />
-    </div>
+    <Suspense fallback={<div>Loading page...</div>}>
+      <div>
+        <Navbar />
+        <WelcomeSection />
+        <Footer />
+      </div>
+    </Suspense>
   );
 }
 
