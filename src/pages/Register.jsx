@@ -1,5 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import { useRegister } from "../hooks/useRegister";
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 // Lazy load the ToastContainer from 'react-toastify'
 const ToastContainer = lazy(() => import("react-toastify").then(module => ({ default: module.ToastContainer })));
@@ -9,10 +11,11 @@ const Register = () => {
 
   return (
     <Suspense fallback={<div>Loading page...</div>}>
-      <div className="bg-gray-100 flex justify-center items-center min-h-screen p-4">
+       <Navbar />
+      <div className="bg-gray-100 flex justify-center items-center min-h-screen p-4 mt-20">
         <div className="bg-white shadow-lg rounded-lg flex flex-col md:flex-row w-full max-w-4xl">
           {/* Left Section (Form) */}
-          <div className="w-full md:w-1/2 p-8">
+          <div className="w-full md:w-1/2 p-8 ">
             <h2 className="text-2xl font-bold text-gray-800 text-center">
               Create an Account
             </h2>
@@ -113,7 +116,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-
+      <Footer />
       {/* Lazy-loaded ToastContainer */}
       <Suspense fallback={null}>
         <ToastContainer />

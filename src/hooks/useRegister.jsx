@@ -31,9 +31,12 @@
 
 //   return { handleRegister, formData, setFormData, errorMessage };
 // };
+
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { API_ROUTES } from '../services/apiService';
+import { toast } from 'react-toastify';
 
 export const useRegister = () => {
   const [formData, setFormData] = useState({
@@ -43,6 +46,7 @@ export const useRegister = () => {
   });
 
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -51,10 +55,17 @@ export const useRegister = () => {
       const response = await axios.post(API_ROUTES.REGISTER, formData);
 
       if (response.status === 200) {
-        setFormData({ username: '', email: '', password: '' }); 
+        toast.success('Registration successful! Redirecting to login...');
+        setFormData({ username: '', email: '', password: '' });
+
+        // Redirect to login after short delay
+        setTimeout(() => {
+          navigate('/login');
+        }, 1500);
       }
     } catch (error) {
       setErrorMessage('Registration failed. Please try again.');
+      toast.error('Registration failed. Please try again.');
     }
   };
 

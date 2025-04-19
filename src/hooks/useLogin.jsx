@@ -32,7 +32,9 @@
 // }
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { API_ROUTES } from "../services/apiService";
 
 export const useLogin = () => {
@@ -42,6 +44,7 @@ export const useLogin = () => {
   });
 
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -50,12 +53,17 @@ export const useLogin = () => {
       const response = await axios.post(API_ROUTES.LOGIN, formData);
 
       if (response.status === 200) {
-        // Assuming ToastContainer is now handled in the component
-        setFormData({ email: "", password: "" }); 
+        toast.success("Logged in successfully");
+        setFormData({ email: "", password: "" });
+
+        // Redirect after a short delay
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 1500);
       }
     } catch (error) {
       setErrorMessage("Login failed. Please try again.");
-      // You can use the dynamic ToastContainer for showing errors in the component
+      toast.error("Login failed. Please try again.");
     }
   };
 
