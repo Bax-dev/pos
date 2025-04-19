@@ -20,16 +20,16 @@ const Login = () => {
             <form onSubmit={handleLogin}>
               <div className="mb-4">
                 <label className="block text-gray-700 font-semibold mb-1">
-                  Email
+                Username
                 </label>
                 <div className="flex items-center border rounded-md p-2">
                   <input
                     type="text"
                     className="w-full outline-none"
                     placeholder="Your Username"
-                    value={formData.email}
+                    value={formData.username}
                     onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
+                      setFormData({ ...formData, username: e.target.value })
                     }
                     required
                     autoComplete="username"
@@ -70,7 +70,7 @@ const Login = () => {
               <p className="text-center text-gray-600 mt-3">
                 Don't have an account? Sign Up{" "}
                 <a href="/register" className="text-gray-900 font-semibold">
-                  Login
+                  Register
                 </a>
               </p>
             </form>

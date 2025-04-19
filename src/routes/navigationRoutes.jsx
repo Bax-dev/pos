@@ -2,6 +2,7 @@
 import Home from '../pages/Home';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
+import Dashboard from '../pages/Dashboard';
 
 const navigationRoutes = [
   {
@@ -16,6 +17,10 @@ const navigationRoutes = [
   {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard />,
   },
 ];
 

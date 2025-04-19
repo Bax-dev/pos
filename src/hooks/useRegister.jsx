@@ -1,51 +1,17 @@
-// import { useState } from 'react';
-// import axios from 'axios';
-// import { API_ROUTES } from '../services/apiService';
-// import { toast } from 'react-toastify';  
-// import 'react-toastify/dist/ReactToastify.css'; 
-
-// export const useRegister = () => {
-//   const [formData, setFormData] = useState({
-//     username: '',
-//     email: '',
-//     password: ''
-//   });
-
-//   const [errorMessage, setErrorMessage] = useState('');
-
-//   const handleRegister = async (e) => {
-//     e.preventDefault();
-
-//     try {
-//       const response = await axios.post(API_ROUTES.REGISTER, formData);
-      
-//       if (response.status === 200) {
-//         toast.success('Registration successful!');
-//         setFormData({ username: '', email: '', password: '' }); 
-//       }
-//     } catch (error) {
-//       setErrorMessage('Registration failed. Please try again.');
-//       toast.error('Registration failed. Please try again.');
-//     }
-//   };
-
-//   return { handleRegister, formData, setFormData, errorMessage };
-// };
-
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { API_ROUTES } from '../services/apiService';
-import { toast } from 'react-toastify';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { API_ROUTES } from "../services/apiService";
+import { toast } from "react-toastify";
 
 export const useRegister = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: ''
+    username: "",
+    email: "",
+    password: "",
   });
 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -54,18 +20,23 @@ export const useRegister = () => {
     try {
       const response = await axios.post(API_ROUTES.REGISTER, formData);
 
-      if (response.status === 200) {
-        toast.success('Registration successful! Redirecting to login...');
-        setFormData({ username: '', email: '', password: '' });
+      if (response?.data) {
+        toast.success("Registration successful! Redirecting to login...");
 
-        // Redirect to login after short delay
+        setFormData({ username: "", email: "", password: "" });
+
         setTimeout(() => {
-          navigate('/login');
-        }, 1500);
+          navigate("/login");
+        }, 2000);
       }
     } catch (error) {
-      setErrorMessage('Registration failed. Please try again.');
-      toast.error('Registration failed. Please try again.');
+      if (error.response?.status === 409) {
+        toast.error("User already exists.");
+      } else if (error.response?.status === 400) {
+        toast.error("Invalid registration details.");
+      } else {
+        toast.error("Registration failed. Please try again.");
+      }
     }
   };
 

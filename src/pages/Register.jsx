@@ -6,12 +6,13 @@ import Footer from '../components/Footer';
 // Lazy load the ToastContainer from 'react-toastify'
 const ToastContainer = lazy(() => import("react-toastify").then(module => ({ default: module.ToastContainer })));
 
+
 const Register = () => {
   const { handleRegister, formData, setFormData, errorMessage } = useRegister();
 
   return (
     <Suspense fallback={<div>Loading page...</div>}>
-       <Navbar />
+      <Navbar />
       <div className="bg-gray-100 flex justify-center items-center min-h-screen p-4 mt-20">
         <div className="bg-white shadow-lg rounded-lg flex flex-col md:flex-row w-full max-w-4xl">
           {/* Left Section (Form) */}
@@ -117,10 +118,11 @@ const Register = () => {
         </div>
       </div>
       <Footer />
-      {/* Lazy-loaded ToastContainer */}
+
       <Suspense fallback={null}>
         <ToastContainer />
       </Suspense>
+      
     </Suspense>
   );
 };
