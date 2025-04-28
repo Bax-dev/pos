@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/layout/Sidebar";
 import Overlay from "../components/Overlay";
-import Header from "../components/Header";
+import Header from "../components/layout/Header";
 import DashboardCards from "../components/DashboardCards";
+import useTitle from "../hooks/useTitle"; 
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  useTitle("Dashboard - Paystock"); 
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const closeSidebar = () => setIsSidebarOpen(false);

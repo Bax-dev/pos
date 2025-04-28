@@ -3,6 +3,7 @@ import Home from '../pages/Home';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
 import Dashboard from '../pages/Dashboard';
+import ProductPage from '../pages/Products';
 
 const navigationRoutes = [
   {
@@ -21,6 +22,12 @@ const navigationRoutes = [
   {
     path: '/dashboard',
     element: <Dashboard />,
+  },
+
+  
+  {
+    path: '/products',
+    element: <ProductPage />,
   },
 ];
 

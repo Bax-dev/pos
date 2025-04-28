@@ -1,5 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import { useLogin } from "../hooks/useLogin";
+import useTitle from "../hooks/useTitle";
+
 
 const ToastContainer = lazy(() =>
   import("react-toastify").then((module) => ({ default: module.ToastContainer }))
@@ -7,6 +9,7 @@ const ToastContainer = lazy(() =>
 
 const Login = () => {
   const { handleLogin, formData, setFormData, errorMessage } = useLogin();
+  useTitle("Login - Paystock"); 
 
   return (
     <Suspense fallback={<div>Loading page...</div>}>

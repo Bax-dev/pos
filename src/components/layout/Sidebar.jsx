@@ -1,6 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";  // Import Link from react-router-dom
+import useUser from "../../hooks/useUser";
+import useLogout from "../../hooks/useLogout";
 
 const Sidebar = ({ isOpen, onClose }) => {
+  const username = useUser();
+  const { logout } = useLogout();
+
   return (
     <aside
       className={`bg-gray-900 text-white w-64 fixed inset-y-0 left-0 z-40 transform transition-transform duration-300 ease-in-out flex flex-col p-6 ${
@@ -14,29 +20,34 @@ const Sidebar = ({ isOpen, onClose }) => {
           className="rounded-full w-12 h-12"
         />
         <div>
-          <h2 className="text-lg font-semibold">Nirmal Kumar P</h2>
+          <h2 className="text-lg font-semibold">{username || "Loading..."}</h2>
         </div>
       </div>
       <nav className="mt-10 space-y-3 text-sm">
-        {[
-          { icon: "bi-house-door-fill", label: "Dashboard" },
-          { icon: "bi-box", label: "Inventory" },
-          { icon: "bi-cart-check", label: "Orders" },
-          { icon: "bi-basket", label: "Purchase" },
-        ].map(({ icon, label }) => (
-          <a
+        {[  
+          { icon: "bi-house-door-fill", label: "Dashboard", path: "/dashboard" },
+          { icon: "bi-cart", label: "Products", path: "/products" },  
+          { icon: "bi-box", label: "Inventory", path: "/inventory" },
+          { icon: "bi-cart-check", label: "Orders", path: "/orders" },
+          { icon: "bi-basket", label: "Purchase", path: "/purchase" },
+          { icon: "bi-gear", label: "Settings", path: "/settings" },
+        ].map(({ icon, label, path }) => (
+          <Link
             key={label}
-            href="#"
+            to={path}  // Use `to` prop for navigation
             className="flex items-center gap-3 p-3 rounded-md hover:bg-gray-800 transition"
           >
             <i className={`bi ${icon} text-lg`} />
             <span>{label}</span>
-          </a>
+          </Link>
         ))}
       </nav>
+
       <div className="mt-auto pt-6 border-t border-gray-700">
         <a
           href="#"
+          onClick={logout}
+          title="Logout"
           className="flex items-center gap-3 p-3 rounded-md hover:bg-gray-800 transition"
         >
           <i className="bi bi-box-arrow-right text-lg" />

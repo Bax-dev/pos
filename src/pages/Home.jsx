@@ -1,8 +1,8 @@
 
 import React, { Suspense} from 'react'; 
-import Navbar from '../components/Navbar';
-import WelcomeSection from '../components/WelcomeSection';
-import Footer from '../components/Footer';                                               
+import Navbar from '../components/website/Navbar';
+import WelcomeSection from '../components/website/WelcomeSection';
+import Footer from '../components/website/Footer';                                               
 
 function Home() {
   return (

@@ -1,14 +1,15 @@
 import React, { lazy, Suspense } from "react";
 import { useRegister } from "../hooks/useRegister";
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import useTitle from "../hooks/useTitle";
+import Navbar from '../components/website/Navbar';
+import Footer from '../components/website/Footer';
 
-// Lazy load the ToastContainer from 'react-toastify'
 const ToastContainer = lazy(() => import("react-toastify").then(module => ({ default: module.ToastContainer })));
 
 
 const Register = () => {
   const { handleRegister, formData, setFormData, errorMessage } = useRegister();
+  useTitle("Register - Paystock");
 
   return (
     <Suspense fallback={<div>Loading page...</div>}>

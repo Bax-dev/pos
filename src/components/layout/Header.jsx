@@ -1,12 +1,15 @@
 import React from "react";
+import useUser from "../../hooks/useUser"; 
 
 const Header = ({ onToggle, isSidebarOpen }) => {
+  const username = useUser();
+
   return (
     <header className="flex justify-between items-center mb-6">
       <button className="md:hidden text-3xl" onClick={onToggle}>
         <i className={`bi ${isSidebarOpen ? "bi-x" : "bi-list"}`}></i>
       </button>
-      <h1 className="text-2xl md:text-3xl font-bold">Welcome, Nirmal 👋</h1>
+      <h1 className="text-2xl md:text-3xl font-bold">Welcome, {username || "Loading..."} 👋</h1>
       <input
         type="text"
         placeholder="Search..."

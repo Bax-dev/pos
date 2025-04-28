@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";  // Import Link from react-router-dom
-import { initNavbarToggle } from "../utils/navbarToggle"; // adjust path if needed
+import { Link } from "react-router-dom";
+import { initNavbarToggle } from "../../utils/navbarToggle"; 
 
 const Navbar = () => {
   useEffect(() => {
